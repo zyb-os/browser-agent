@@ -1,0 +1,100 @@
+{
+  "/wiki/New_7_Wonders_of_the_World": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/wiki/Seven_Wonders_of_the_Ancient_World": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 140,
+          "y": 271
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "up",
+          "amount": 3000
+        },
+        "description": "Reveal more relevant page content by scrolling up"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "up",
+          "amount": 5000
+        },
+        "description": "Reveal more relevant page content by scrolling up"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/wiki/Large_language_model": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 400
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  }
+}

@@ -1,0 +1,476 @@
+{
+  "/": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 1143,
+          "y": 22
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 5,
+    "misses": 0
+  },
+  "/s": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 650,
+          "y": 603
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 665,
+          "y": 571
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 948,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  },
+  "/ZeroWater-Replacement-BPA-Free-Dispensers-Certified/dp/B00OZIOLB2/ref=sr_1_3": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "y": 293,
+          "x": 948
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/ZeroWater-Replacement-BPA-Free-Dispensers-Certified/dp/B00OZIOLB2/ref=nav_signin": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "y": 293,
+          "x": 948
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "y": 293,
+          "x": 445
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 445,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "y": 293,
+          "x": 948
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 948,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 948,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 948,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "y": 293,
+          "x": 445
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 445,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 445,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 948,
+          "y": 293
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/gp/aw/d/B00OZIOLB2/": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 757,
+          "y": 757
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/gp/aw/d/B001CUQ1C8/": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 848,
+          "y": 779
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/gp/aw/d/B00OZIOLEY/": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 1139,
+          "y": 489
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/cart/smart-wagon": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 971,
+          "y": 187
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/ap/signin": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 640,
+          "y": 159
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 10,
+    "misses": 0
+  },
+  "/ax/claim": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 640,
+          "y": 199
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  },
+  "/checkout/p/p-106-2925044-3345007/spc": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 1063,
+          "y": 109
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/gp/buy/thankyou/handlers/display.html": {
+    "steps": [
+      {
+        "tool": "wait",
+        "input": {
+          "seconds": 2
+        },
+        "description": "Allow page content or navigation to finish loading"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/ap/cvf/transactionapproval": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 640,
+          "y": 213
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  },
+  "/your-orders/orders": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 970,
+          "y": 691
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  },
+  "/your-orders/order-details": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 970,
+          "y": 517
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/gp/your-account/ship-track": {
+    "steps": [
+      {
+        "tool": "wait",
+        "input": {
+          "seconds": 2
+        },
+        "description": "Allow page content or navigation to finish loading"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/spr/returns/cart": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 200
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "up",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling up"
+      },
+      {
+        "tool": "hover",
+        "input": {
+          "x": 560,
+          "y": 450
+        },
+        "description": "Hover over the cached page element to reveal relevant options"
+      },
+      {
+        "tool": "key_press",
+        "input": {
+          "key": "End"
+        },
+        "description": "Use the End key to continue the current workflow"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  },
+  "/gp/your-account/order-history": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 1143,
+          "y": 28
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/a/orders": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 328,
+          "y": 113
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/gp/help/customer/display.html": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 218,
+          "y": 359
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 140,
+          "y": 235
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/ap/cvf/approval": {
+    "steps": [
+      {
+        "tool": "wait",
+        "input": {
+          "seconds": 2
+        },
+        "description": "Allow page content or navigation to finish loading"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  }
+}

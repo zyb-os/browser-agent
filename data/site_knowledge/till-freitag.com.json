@@ -1,0 +1,128 @@
+{
+  "/en/blog/open-source-llm-comparison": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 600
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 1249,
+          "y": 616
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 600
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 600
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 600
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 500
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  }
+}

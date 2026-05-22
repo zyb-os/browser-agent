@@ -1,0 +1,88 @@
+{
+  "/news/how-to-see-who-is-using-your-wi-fi/": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 1113,
+          "y": 559
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 600
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  }
+}

@@ -1,0 +1,1118 @@
+{
+  "walgreens.com": {
+    "/": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 1131,
+            "y": 131
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 1153,
+            "y": 77
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 972,
+            "y": 88
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 5,
+      "misses": 1
+    },
+    "/search/results": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down"
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/search/results.jsp": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 484,
+            "y": 665
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    },
+    "/store/c/walgreens-shiny-&-smooth-shampoo/ID=300452904-product": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/store/c/garnier-fructis-grow-strong-shampoo,-for-stronger,-healthier,-shinier-hair/ID=prod6345040-product": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/storelistings/storesbycity.jsp": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 939,
+            "y": 476
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/login.jsp": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 640,
+            "y": 177
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    },
+    "/profile/verify_identity.jsp": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 141,
+            "y": 533
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "wait",
+          "input": {
+            "seconds": 2
+          },
+          "description": "Allow page content or navigation to finish loading"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    }
+  },
+  "amazon.com": {
+    "/": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 1143,
+            "y": 22
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 5,
+      "misses": 0
+    },
+    "/s": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 650,
+            "y": 603
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 665,
+            "y": 571
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 948,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    },
+    "/ZeroWater-Replacement-BPA-Free-Dispensers-Certified/dp/B00OZIOLB2/ref=sr_1_3": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "y": 293,
+            "x": 948
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/ZeroWater-Replacement-BPA-Free-Dispensers-Certified/dp/B00OZIOLB2/ref=nav_signin": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "y": 293,
+            "x": 948
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "y": 293,
+            "x": 445
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 445,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "y": 293,
+            "x": 948
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 948,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 948,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 948,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "y": 293,
+            "x": 445
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 445,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 445,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 948,
+            "y": 293
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/gp/aw/d/B00OZIOLB2/": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 757,
+            "y": 757
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/gp/aw/d/B001CUQ1C8/": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 848,
+            "y": 779
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/gp/aw/d/B00OZIOLEY/": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 1139,
+            "y": 489
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/cart/smart-wagon": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 971,
+            "y": 187
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/ap/signin": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 640,
+            "y": 159
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 10,
+      "misses": 0
+    },
+    "/ax/claim": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 640,
+            "y": 199
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    },
+    "/checkout/p/p-106-2925044-3345007/spc": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 1063,
+            "y": 109
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/gp/buy/thankyou/handlers/display.html": {
+      "steps": [
+        {
+          "tool": "wait",
+          "input": {
+            "seconds": 2
+          },
+          "description": "Allow page content or navigation to finish loading"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/ap/cvf/transactionapproval": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 640,
+            "y": 213
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    },
+    "/your-orders/orders": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 970,
+            "y": 691
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    },
+    "/your-orders/order-details": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 970,
+            "y": 517
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/gp/your-account/ship-track": {
+      "steps": [
+        {
+          "tool": "wait",
+          "input": {
+            "seconds": 2
+          },
+          "description": "Allow page content or navigation to finish loading"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/spr/returns/cart": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 200
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "up",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling up"
+        },
+        {
+          "tool": "hover",
+          "input": {
+            "x": 560,
+            "y": 450
+          },
+          "description": "Hover over the cached page element to reveal relevant options"
+        },
+        {
+          "tool": "key_press",
+          "input": {
+            "key": "End"
+          },
+          "description": "Use the End key to continue the current workflow"
+        }
+      ],
+      "hits": 2,
+      "misses": 0
+    },
+    "/gp/your-account/order-history": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 1143,
+            "y": 28
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/a/orders": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 328,
+            "y": 113
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/gp/help/customer/display.html": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 218,
+            "y": 359
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 140,
+            "y": 235
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/ap/cvf/approval": {
+      "steps": [
+        {
+          "tool": "wait",
+          "input": {
+            "seconds": 2
+          },
+          "description": "Allow page content or navigation to finish loading"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "en.wikipedia.org": {
+    "/wiki/New_7_Wonders_of_the_World": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/wiki/Seven_Wonders_of_the_Ancient_World": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 140,
+            "y": 271
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "up",
+            "amount": 3000
+          },
+          "description": "Reveal more relevant page content by scrolling up"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "up",
+            "amount": 5000
+          },
+          "description": "Reveal more relevant page content by scrolling up"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    },
+    "/wiki/Large_language_model": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 400
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 300
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "linkedin.com": {
+    "/in/rinshadkk/": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 779,
+            "y": 190
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "videodirect.amazon.com": {
+    "/home/landing": {
+      "steps": [
+        {
+          "tool": "wait",
+          "input": {
+            "seconds": 1
+          },
+          "description": "Allow page content or navigation to finish loading"
+        },
+        {
+          "tool": "go_back",
+          "input": {},
+          "description": "Go back to the previous browser page"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "till-freitag.com": {
+    "/en/blog/open-source-llm-comparison": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 600
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "click",
+          "input": {
+            "x": 1249,
+            "y": 616
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 600
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 600
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 600
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 500
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "simplilearn.com": {
+    "/open-source-llms-article": {
+      "steps": [
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 700
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 1200
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 1000
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 1000
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 1000
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 1000
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "fing.com": {
+    "/news/how-to-see-who-is-using-your-wi-fi/": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 1113,
+            "y": 559
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 600
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  },
+  "wikihow.com": {
+    "/See-Who-Is-Connected-to-Your-Wireless-Network": {
+      "steps": [
+        {
+          "tool": "click",
+          "input": {
+            "x": 1258,
+            "y": 697
+          },
+          "description": "Click the cached page element to advance the current workflow"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 800
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 900
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 900
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 900
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 900
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        },
+        {
+          "tool": "scroll",
+          "input": {
+            "direction": "down",
+            "amount": 900
+          },
+          "description": "Reveal more relevant page content by scrolling down"
+        }
+      ],
+      "hits": 1,
+      "misses": 0
+    }
+  }
+}

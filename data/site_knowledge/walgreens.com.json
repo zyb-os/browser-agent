@@ -1,0 +1,136 @@
+{
+  "/": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 1131,
+          "y": 131
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 1153,
+          "y": 77
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "click",
+        "input": {
+          "x": 972,
+          "y": 88
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 5,
+    "misses": 1
+  },
+  "/search/results": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down"
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/search/results.jsp": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 484,
+          "y": 665
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  },
+  "/store/c/walgreens-shiny-&-smooth-shampoo/ID=300452904-product": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/store/c/garnier-fructis-grow-strong-shampoo,-for-stronger,-healthier,-shinier-hair/ID=prod6345040-product": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 300
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/storelistings/storesbycity.jsp": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 939,
+          "y": 476
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  },
+  "/login.jsp": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 640,
+          "y": 177
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  },
+  "/profile/verify_identity.jsp": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 141,
+          "y": 533
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      },
+      {
+        "tool": "wait",
+        "input": {
+          "seconds": 2
+        },
+        "description": "Allow page content or navigation to finish loading"
+      }
+    ],
+    "hits": 2,
+    "misses": 0
+  }
+}

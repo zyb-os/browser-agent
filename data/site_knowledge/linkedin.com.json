@@ -1,0 +1,16 @@
+{
+  "/in/rinshadkk/": {
+    "steps": [
+      {
+        "tool": "click",
+        "input": {
+          "x": 779,
+          "y": 190
+        },
+        "description": "Click the cached page element to advance the current workflow"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  }
+}

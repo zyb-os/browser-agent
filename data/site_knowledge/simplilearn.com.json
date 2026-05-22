@@ -1,0 +1,80 @@
+{
+  "/open-source-llms-article": {
+    "steps": [
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 700
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 1200
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 800
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 1000
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 1000
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 1000
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      },
+      {
+        "tool": "scroll",
+        "input": {
+          "direction": "down",
+          "amount": 1000
+        },
+        "description": "Reveal more relevant page content by scrolling down"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  }
+}

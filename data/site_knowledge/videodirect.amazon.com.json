@@ -1,0 +1,20 @@
+{
+  "/home/landing": {
+    "steps": [
+      {
+        "tool": "wait",
+        "input": {
+          "seconds": 1
+        },
+        "description": "Allow page content or navigation to finish loading"
+      },
+      {
+        "tool": "go_back",
+        "input": {},
+        "description": "Go back to the previous browser page"
+      }
+    ],
+    "hits": 1,
+    "misses": 0
+  }
+}
