@@ -403,7 +403,7 @@ class OrchestratorClient:
             self._common_settings.get("model")
             or self._common_settings.get("default_model")
             or self._model
-            or "claude-sonnet-4-6"
+            or "claude-haiku-4-5"
         )
         proxy_url     = f"{self._base}/api/v1/llm/complete"
         retry_count   = int(self._common_settings.get("browser_llm_retry_count") or 3)
@@ -441,8 +441,8 @@ class OrchestratorClient:
     def _start_browser_sync(self) -> None:
         """Runs inside the dedicated browser thread — safe to call Playwright sync API."""
         headless = str(self._common_settings.get("headless", "false")).lower() in ("true", "1", "yes")
-        screenshot_format = self._common_settings.get("screenshot_format") or "png"
-        screenshot_quality = self._common_settings.get("screenshot_quality") or 70
+        screenshot_format = self._common_settings.get("screenshot_format") or "jpeg"
+        screenshot_quality = self._common_settings.get("screenshot_quality") or 50
         self._browser = BrowserController(
             headless=headless,
             screenshot_format=str(screenshot_format),

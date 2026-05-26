@@ -41,7 +41,7 @@ CACHEABLE_TOOLS: frozenset[str] = frozenset(
 # typed) and are therefore unsafe to replay out of context.
 RECORDING_STOPPERS: frozenset[str] = frozenset({"type_text", "task_complete"})
 
-MIN_HITS = 2            # successes required before enabling auto-replay
+MIN_HITS = 1            # successes required before enabling auto-replay
 MIN_CONFIDENCE = 0.70   # minimum hit / (hit + miss) ratio
 
 

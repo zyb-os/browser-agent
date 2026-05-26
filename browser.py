@@ -87,8 +87,8 @@ class BrowserController:
     def __init__(
         self,
         headless: bool = False,
-        screenshot_format: str = "png",
-        screenshot_quality: int = 70,
+        screenshot_format: str = "jpeg",
+        screenshot_quality: int = 50,
     ) -> None:
         self._headless = headless
         self._screenshot_format = self._normalise_screenshot_format(screenshot_format)

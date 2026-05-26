@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 MAX_TOKENS = 4096
 
 PROVIDER_DEFAULTS: dict[str, str] = {
-    "anthropic": "claude-sonnet-4-6",
+    "anthropic": "claude-haiku-4-5",
     "openai":    "gpt-4o",
     "gemini":    "gemini-2.5-flash",
 }
@@ -216,11 +216,19 @@ class AnthropicProvider:
         collected: list[dict]  = []
         current:   dict | None = None
 
+        # Mark system prompt and tool schemas as cacheable so Anthropic can serve
+        # them from its prompt cache on every turn after the first, cutting input
+        # token cost for those static segments by ~90 %.
+        cached_system = [{"type": "text", "text": system, "cache_control": {"type": "ephemeral"}}]
+        cached_tools: list[dict] = list(tools)
+        if cached_tools:
+            cached_tools[-1] = {**cached_tools[-1], "cache_control": {"type": "ephemeral"}}
+
         with self.client.messages.stream(
             model=self.model,
             max_tokens=MAX_TOKENS,
-            system=system,
-            tools=tools,
+            system=cached_system,
+            tools=cached_tools,
             messages=messages,
         ) as stream:
             for event in stream:
@@ -637,7 +645,7 @@ def get_provider(name: str, model: str | None = None, proxy_url: str = "", agent
     if name == "proxy":
         if not proxy_url or not agent_id:
             raise ValueError("proxy_url and agent_id are required for ProxyProvider")
-        return ProxyProvider(proxy_url=proxy_url, agent_id=agent_id, model=model or PROVIDER_DEFAULTS.get("anthropic", "claude-sonnet-4-6"))
+        return ProxyProvider(proxy_url=proxy_url, agent_id=agent_id, model=model or PROVIDER_DEFAULTS.get("anthropic", "claude-haiku-4-5"))
     model = model or PROVIDER_DEFAULTS.get(name, "")
     if name == "anthropic":
         return AnthropicProvider(model)
