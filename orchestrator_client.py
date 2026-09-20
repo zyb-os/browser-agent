@@ -158,9 +158,9 @@ REGISTRATION_PAYLOAD: dict = {
             "label": "LLM Provider",
             "type": "string",
             "required": False,
-            "description": "anthropic | openai | gemini",
+            "description": "anthropic | openai | gemini | ollama | lmstudio | openai-compatible | groq | xai | mistral | deepseek",
             "default": "anthropic",
-            "options": ["anthropic", "openai", "gemini"],
+            "options": ["anthropic", "openai", "gemini", "ollama", "lmstudio", "openai-compatible", "groq", "xai", "mistral", "deepseek"],
         },
         {
             "key": "model",
@@ -316,6 +316,8 @@ class OrchestratorClient:
         # Browser supports exactly 1 concurrent task (single tab)
         self._task_sem = asyncio.Semaphore(1)
         self._shutting_down: bool = False
+        # req_id → asyncio.Task: for task_cancel support
+        self._running_tasks: dict[str, asyncio.Task] = {}
 
         # Pause/resume placeholders retained for backward compatibility.
         self._pause_event:    threading.Event = threading.Event()
@@ -405,6 +407,7 @@ class OrchestratorClient:
             or self._model
             or "claude-haiku-4-5"
         )
+        provider      = self._common_settings.get("provider") or self._provider_name or ""
         proxy_url     = f"{self._base}/api/v1/llm/complete"
         retry_count   = int(self._common_settings.get("browser_llm_retry_count") or 3)
         retry_delay_s = float(self._common_settings.get("browser_llm_retry_delay_s") or 5)
@@ -414,6 +417,7 @@ class OrchestratorClient:
             model=model,
             retry_count=retry_count,
             retry_delay_s=retry_delay_s,
+            provider=provider,
         )
         logger.info("LLM provider: proxy  model: %s  backend: %s", self._llm_provider.model, backend)
 
@@ -617,16 +621,21 @@ class OrchestratorClient:
                             new_backend, self._backend,
                         )
 
-                # ── Model hot-reload (works for both backends) ──────────────
+                # ── Model / provider hot-reload (works for both backends) ────
                 new_model = (
                     self._common_settings.get("model")
                     or self._common_settings.get("default_model")
                 )
-                if new_model and self._llm_provider is not None:
-                    self._llm_provider.model = new_model
-                    logger.info("settings_push: model updated → %s", new_model)
-                else:
-                    logger.info("settings_push: %d setting(s) applied (no model change)", len(settings))
+                new_provider = self._common_settings.get("provider") or ""
+                if self._llm_provider is not None:
+                    if new_model:
+                        self._llm_provider.model = new_model
+                        logger.info("settings_push: model updated → %s", new_model)
+                    if new_provider:
+                        self._llm_provider._provider = new_provider
+                        logger.info("settings_push: provider updated → %s", new_provider)
+                    if not new_model and not new_provider:
+                        logger.info("settings_push: %d setting(s) applied (no model/provider change)", len(settings))
 
                 # ── Retry settings hot-reload ───────────────────────────────
                 if self._llm_provider is not None:
@@ -682,6 +691,15 @@ class OrchestratorClient:
             agents = payload.get("agents", [])
             logger.debug("Discovery response: %d agent(s)", len(agents))
 
+        elif mtype == "task_cancel":
+            req_id = payload.get("task_id", "")
+            task = self._running_tasks.get(req_id)
+            if task and not task.done():
+                task.cancel()
+                logger.info("Cancelling browser task req_id=%s", req_id)
+            else:
+                logger.warning("task_cancel for unknown/completed browser task req_id=%s", req_id)
+
         elif mtype == "agent_restart":
             logger.info("Restart requested by orchestrator — shutting down for restart")
             asyncio.create_task(self._graceful_shutdown())
@@ -725,6 +743,11 @@ class OrchestratorClient:
         followup_answers: dict | None = input_data.get("followup_answers")
         if not isinstance(followup_answers, dict) or not followup_answers:
             followup_answers = None
+
+        # Register task for cancellation (task_cancel handler looks up by req_id)
+        _my_task = asyncio.current_task()
+        if req_id and _my_task:
+            self._running_tasks[req_id] = _my_task
 
         # Fast-fail if Chrome extension is not connected — avoids wasting 60
         # LLM iterations returning "Chrome extension is not connected" errors.
@@ -820,6 +843,10 @@ class OrchestratorClient:
                     recipient_id=sender_id, correlation_id=req_id,
                 ))
 
+            except asyncio.CancelledError:
+                logger.info("browse_web (chrome-mcp) task cancelled (req_id=%s)", req_id)
+                raise
+
             except Exception as exc:
                 self._tasks_failed += 1
                 duration_ms = (time.monotonic() - t0) * 1000
@@ -834,6 +861,8 @@ class OrchestratorClient:
                 self._active_tasks -= 1
                 self._status = "draining" if self._shutting_down else "available"
                 await self._send_status_update(ws)
+                if req_id:
+                    self._running_tasks.pop(req_id, None)
 
     async def _handle_task_request(self, ws, msg: dict) -> None:
         """
@@ -866,6 +895,11 @@ class OrchestratorClient:
                 correlation_id=req_id,
             ))
             return
+
+        # Register task for cancellation (task_cancel handler looks up by req_id)
+        _my_task = asyncio.current_task()
+        if req_id and _my_task:
+            self._running_tasks[req_id] = _my_task
 
         # Legacy pause metadata retained for compatibility.
         self._pause_sender = sender_id or ""
@@ -1077,17 +1111,59 @@ class OrchestratorClient:
                     self._agent.plan_callback = None
                     self._agent.step_callback = None
                 duration_ms = (time.monotonic() - t0) * 1000
-                self._tasks_failed += 1
-                err = f"Task timed out after {timeout_ms:.0f} ms"
-                logger.warning(err)
+                self._tasks_completed += 1
+                logger.warning("browse_web timed out after %.0f ms — pausing for resume", duration_ms)
+
+                # Preserve completed context so the next retry resumes from this point.
+                progress_summary = (
+                    f"Task '{task_text[:80]}' paused — timed out after {timeout_ms:.0f} ms. "
+                    "Reply to continue from where I left off."
+                )
+                if self._agent is not None:
+                    self._agent.inject_resume_placeholder(
+                        f"timed out after {timeout_ms:.0f} ms"
+                    )
+
                 if reply_context:
-                    await self._notify_user(reply_context, f"❌ Browser task timed out after {timeout_ms:.0f} ms")
+                    await self._notify_user(
+                        reply_context,
+                        f"⏸️ *Browser task timed out after {timeout_ms:.0f} ms.*\n\n"
+                        f"{progress_summary}\n\n_Reply to resume._",
+                    )
                 await self._ws_send(ws, self._msg(
                     "task_response",
-                    {"success": False, "error": err, "duration_ms": round(duration_ms, 1)},
+                    {
+                        "success": True,
+                        "output_data": {
+                            "followup_request": {
+                                "question":      progress_summary,
+                                "question_id":   str(uuid.uuid4()),
+                                "answer_format": "text",
+                                "intent":        "timeout_resume",
+                            },
+                        },
+                        "duration_ms": round(duration_ms, 1),
+                    },
                     recipient_id=sender_id,
                     correlation_id=req_id,
                 ))
+
+            except asyncio.CancelledError:
+                if consumer_task and not consumer_task.done():
+                    _notify_q.put(_SENTINEL)
+                    consumer_task.cancel()
+                if self._agent:
+                    self._agent.plan_callback = None
+                    self._agent.step_callback = None
+                # Stop the Playwright browser to interrupt the thread — fire-and-forget
+                # via the single-threaded executor so a subsequent task can restart it.
+                if self._browser is not None:
+                    asyncio.get_running_loop().run_in_executor(
+                        self._browser_thread, self._browser.stop
+                    )
+                    self._browser = None
+                logger.info("browse_web task cancelled (req_id=%s)", req_id)
+                raise
 
             except Exception as exc:
                 if consumer_task and not consumer_task.done():
@@ -1105,40 +1181,38 @@ class OrchestratorClient:
                         "browse_web LLM retries exhausted after %d attempt(s): %s",
                         exc.attempts, exc.last_error,
                     )
-                    # Build a rich replan context so the planner can decide whether
-                    # to retry the same step or route around the failure.
-                    replan_context = {
-                        "failure_type":      "llm_unavailable",
-                        "agent_name":        AGENT_NAME,
-                        "capability":        "browse_web",
-                        "retry_possible":    True,   # transient failure; retry is worth trying
-                        "last_error":        exc.last_error,
-                        "retry_attempts":    exc.attempts,
-                        "progress_summary":  f"Task '{task_text[:120]}' — LLM became unreachable after {exc.attempts} attempt(s).",
-                        "completed_steps":   exc.completed_steps,
-                        # Agent-specific resume hints — included in retry input_data by the planner
-                        "resume_context": {
-                            "current_url": exc.current_url,
-                            "page_title":  exc.page_title,
-                        },
-                    }
+                    progress_parts = [f"Task '{task_text[:80]}' paused — LLM unavailable after {exc.attempts} attempt(s)."]
+                    if exc.completed_steps:
+                        progress_parts.append(f"Last steps: {'; '.join(exc.completed_steps[-3:])}")
+                    if exc.current_url:
+                        progress_parts.append(f"Current page: {exc.current_url}")
+                    progress_summary = " ".join(progress_parts)
+
+                    # Preserve completed context so the next retry resumes from here.
+                    if self._agent is not None:
+                        self._agent.inject_resume_placeholder(
+                            f"llm_unavailable after {exc.attempts} attempt(s): {exc.last_error[:80]}"
+                        )
+
                     notify_msg = (
                         f"⚠️ *LLM unavailable after {exc.attempts} attempt(s).*\n"
                         f"Last error: `{exc.last_error}`\n"
                         f"Current page: {exc.current_url or 'unknown'}\n"
-                        "Requesting replan — will retry or find an alternative approach."
+                        "Task paused — will resume from this point on retry."
                     )
                     if reply_context:
                         await self._notify_user(reply_context, notify_msg)
-                    # Return as a followup_request with replan_context so the planner
-                    # knows to replan (rather than reporting hard failure to the user).
                     await self._ws_send(ws, self._msg(
                         "task_response",
                         {
-                            "success": False,
-                            "error": str(exc),
+                            "success": True,
                             "output_data": {
-                                "replan_context": replan_context,
+                                "followup_request": {
+                                    "question":      progress_summary,
+                                    "question_id":   str(uuid.uuid4()),
+                                    "answer_format": "text",
+                                    "intent":        "llm_error_resume",
+                                },
                             },
                             "duration_ms": round(duration_ms, 1),
                         },
@@ -1164,6 +1238,8 @@ class OrchestratorClient:
                 self._active_tasks -= 1
                 self._status = "draining" if self._shutting_down else "available"
                 await self._send_status_update(ws)
+                if req_id:
+                    self._running_tasks.pop(req_id, None)
 
     # ── Status update ──────────────────────────────────────────────────────
 

@@ -480,11 +480,12 @@ class ProxyProvider:
         model:          str,
         retry_count:    int   = 3,
         retry_delay_s:  float = 5.0,
+        provider:       str   = "",
     ) -> None:
         self._proxy_url      = proxy_url
         self._agent_id       = agent_id
         self.model           = model
-        self._provider       = _provider_from_model(model)
+        self._provider       = provider or _provider_from_model(model)
         self._retry_count    = max(0, retry_count)
         self._retry_delay_s  = max(0.0, retry_delay_s)
         self._client         = _httpx.Client(timeout=180)

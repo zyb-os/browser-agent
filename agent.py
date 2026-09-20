@@ -210,7 +210,26 @@ def _repair_message_history(messages: list[dict]) -> list[dict]:
                         if nxt.get("role") == "user" and all(
                             tid in result_ids for tid in tool_use_ids
                         ):
-                            # Valid pair — keep both and advance past them
+                            # Valid pair — keep both and advance past them.
+                            # Strip any extra tool_result blocks that have no
+                            # matching tool_use in this assistant turn.
+                            extra = result_ids - set(tool_use_ids)
+                            if extra:
+                                logger.warning(
+                                    "Stripping %d extra tool_result block(s) with no matching tool_use.",
+                                    len(extra),
+                                )
+                                nxt = {
+                                    **nxt,
+                                    "content": [
+                                        b for b in nxt_content
+                                        if not (
+                                            isinstance(b, dict)
+                                            and b.get("type") == "tool_result"
+                                            and b.get("tool_use_id") in extra
+                                        )
+                                    ],
+                                }
                             repaired.append(msg)
                             repaired.append(nxt)
                             i += 2
@@ -229,19 +248,120 @@ def _repair_message_history(messages: list[dict]) -> list[dict]:
                     i += 1  # skip the now-orphaned user turn too
                 continue
 
-        # Guard against pure tool_result user messages that appear without a
-        # preceding assistant tool_use turn (can happen after history trimming
-        # cuts the conversation right before an assistant turn).
-        if _is_pure_tool_result_message(msg):
-            last_repaired = repaired[-1] if repaired else None
-            if last_repaired is None or last_repaired.get("role") != "assistant":
-                logger.warning("Dropping orphaned tool_result user message at history boundary.")
-                i += 1
-                continue
+        # Strip orphaned tool_result blocks from ANY user message — pure or
+        # mixed with text/image blocks. A tool_result is orphaned when the
+        # previous kept message is not an assistant turn carrying the matching
+        # tool_use id; the API rejects those with a 400. This covers histories
+        # cut mid-pair by trimming or summarisation.
+        if msg.get("role") == "user":
+            content = msg.get("content", [])
+            if isinstance(content, list) and any(
+                isinstance(b, dict) and b.get("type") == "tool_result" for b in content
+            ):
+                prev = repaired[-1] if repaired else None
+                valid_ids: set = set()
+                if prev is not None and prev.get("role") == "assistant":
+                    prev_content = prev.get("content", [])
+                    if isinstance(prev_content, list):
+                        valid_ids = {
+                            b.get("id")
+                            for b in prev_content
+                            if isinstance(b, dict) and b.get("type") == "tool_use"
+                        }
+                at_boundary = prev is None
+                kept_blocks: list[dict] = []
+                orphans = 0
+                for b in content:
+                    is_orphan = (
+                        isinstance(b, dict)
+                        and b.get("type") == "tool_result"
+                        and b.get("tool_use_id") not in valid_ids
+                    )
+                    if not is_orphan:
+                        kept_blocks.append(b)
+                        continue
+                    orphans += 1
+                    if at_boundary:
+                        # At the start of history, convert instead of drop so
+                        # the conversation keeps a valid leading user turn and
+                        # the page context survives.
+                        kept_blocks.append(_tool_result_to_text(b))
+                if orphans:
+                    logger.warning(
+                        "%s %d orphaned tool_result block(s) in user message.",
+                        "Converted" if at_boundary else "Stripped", orphans,
+                    )
+                if not kept_blocks:
+                    i += 1
+                    continue
+                msg = {**msg, "content": kept_blocks}
 
         repaired.append(msg)
         i += 1
+
+    # The API requires the first message to be a user turn. Popping a leading
+    # assistant turn can orphan tool_results in the message that follows it —
+    # convert those to text so the loop converges on a valid history.
+    while repaired and repaired[0].get("role") != "user":
+        logger.warning(
+            "Dropping leading %r message at history boundary.",
+            repaired[0].get("role"),
+        )
+        repaired.pop(0)
+        if repaired and repaired[0].get("role") == "user":
+            c = repaired[0].get("content")
+            if isinstance(c, list):
+                repaired[0] = {
+                    **repaired[0],
+                    "content": [
+                        _tool_result_to_text(b)
+                        if isinstance(b, dict) and b.get("type") == "tool_result"
+                        else b
+                        for b in c
+                    ],
+                }
     return repaired
+
+
+def _tool_result_to_text(block: dict) -> dict:
+    """Convert a tool_result block to a plain text block (truncated)."""
+    inner = block.get("content", "")
+    if isinstance(inner, list):
+        inner = " ".join(
+            ib.get("text", "") for ib in inner
+            if isinstance(ib, dict) and ib.get("type") == "text"
+        )
+    return {"type": "text", "text": f"[Earlier tool result] {str(inner)[:400]}"}
+
+
+def _sanitize_history_start(messages: list[dict]) -> list[dict]:
+    """
+    Make a sliced history valid as the start of an API conversation: the first
+    message must be a user turn and must not contain tool_result blocks (their
+    matching tool_use turn was cut away). Unlike _repair_message_history, the
+    orphaned tool_results are converted to plain text rather than dropped, so
+    page context survives summarisation cuts.
+    """
+    msgs = list(messages)
+    while msgs and msgs[0].get("role") != "user":
+        msgs.pop(0)
+    if not msgs:
+        return msgs
+    first = msgs[0]
+    content = first.get("content")
+    if isinstance(content, list) and any(
+        isinstance(b, dict) and b.get("type") == "tool_result" for b in content
+    ):
+        msgs[0] = {
+            **first,
+            "content": [
+                _tool_result_to_text(b)
+                if isinstance(b, dict) and b.get("type") == "tool_result"
+                else b
+                for b in content
+            ],
+        }
+    return msgs
 
 
 def _trim_old_screenshots(messages: list[dict]) -> list[dict]:
@@ -575,7 +695,9 @@ class BrowserAgent:
 
         if summary:
             self._history_summary = summary
-            self.messages = self.messages[cutoff:]
+            # The raw slice can land mid tool_use/tool_result pair — sanitize
+            # the boundary so the API never sees an orphaned tool_result.
+            self.messages = _sanitize_history_start(self.messages[cutoff:])
             self._turns_since_summary = 0
             logger.debug(
                 "History summarised: %d messages → %d words",
@@ -809,9 +931,14 @@ class BrowserAgent:
         _accumulated_tokens = 0
         system = _build_system_prompt()  # build once per task, not every loop iteration
 
+        _history_retried = False  # one-shot self-heal for structural 400s
+
         while not task_done:
-            # Trim old screenshots before each API call
+            # Trim old screenshots before each API call, then validate the
+            # tool_use/tool_result pairing so the API never sees a history
+            # broken by trimming or mid-task summarisation.
             self.messages = _trim_old_screenshots(self.messages)
+            self.messages = _repair_message_history(self.messages)
 
             # ── Budget check (skip on the very first call) ───────────────────
             if not _first_call:
@@ -849,6 +976,26 @@ class BrowserAgent:
                 except Exception:
                     pass
                 exc.completed_steps = self._extract_completed_steps()
+                raise
+            except Exception as exc:
+                # Self-heal: a tool_use/tool_result pairing 400 means the
+                # history is structurally invalid. Repair and retry once
+                # instead of failing the whole task.
+                err = str(exc)
+                if (
+                    not _history_retried
+                    and "tool_result" in err
+                    and "tool_use" in err
+                ):
+                    _history_retried = True
+                    logger.warning(
+                        "Provider rejected message history — repairing and retrying once: %s",
+                        err[:200],
+                    )
+                    self.messages = _sanitize_history_start(
+                        _repair_message_history(self.messages)
+                    )
+                    continue
                 raise
             print()  # newline after streamed text
 
@@ -1009,6 +1156,34 @@ class BrowserAgent:
 
         print()  # final newline
         return final_summary or "Task completed."
+
+    def inject_resume_placeholder(self, reason_summary: str) -> None:
+        """
+        Clean up dangling tool_use turns, then inject a synthetic ask_user /
+        [Awaiting user answer] pair into history so that the next
+        run_task(followup_answers=...) call can resume seamlessly without
+        replaying steps that already succeeded.
+        """
+        self.messages = _repair_message_history(self.messages)
+        tool_use_id = f"resume_{uuid.uuid4().hex[:8]}"
+        self.messages.append({
+            "role": "assistant",
+            "content": [{
+                "type": "tool_use",
+                "id": tool_use_id,
+                "name": "ask_user",
+                "input": {"question": f"[Paused — {reason_summary}]"},
+            }],
+        })
+        self.messages.append({
+            "role": "user",
+            "content": [{
+                "type": "tool_result",
+                "tool_use_id": tool_use_id,
+                "content": "[Awaiting user answer]",
+            }],
+        })
+        self.knowledge.commit()
 
     def _extract_completed_steps(self) -> list[str]:
         """
